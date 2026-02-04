@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Done - 字体与Logo展示</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- 引入多种字体 -->
+  <link href="https://fonts.googleapis.com/css2?family=
+    Bebas+Neue&family=
+    Clash+Display:wght@400;500;600;700&family=
+    Cabinet+Grotesk:wght@400;500;700;800&family=
+    General+Sans:wght@400;500;600;700&family=
+    Satoshi:wght@400;500;700;900&family=
+    Uncut+Sans:wght@400;500;600;700&family=
+    Space+Grotesk:wght@300;400;500;600;700&family
+    =Syne:wght@400;500;600;700;800&family
+    =Plus+Jakarta+Sans:wght@400;500;600;700;800&family
+    =Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #050505;
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      min-height: 100vh;
+      padding: 60px 40px;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 60px;
+      text-align: center;
+      background: linear-gradient(135deg, #00ff88, #00cc6a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 40px;
+    }
+
+    .option-card {
+      background: rgba(17, 17, 17, 0.8);
+      border: 1px solid #1f1f1f;
+      border-radius: 20px;
+      padding: 40px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .option-card:hover {
+      border-color: #00ff88;
+      box-shadow: 0 0 40px rgba(0, 255, 136, 0.2);
+      transform: translateY(-5px);
+    }
+
+    .option-number {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 14px;
+      color: #555;
+      font-weight: 600;
+    }
+
+    .logo-preview {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #00ff88, #00cc6a);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+    }
+
+    .logo-icon svg {
+      width: 28px;
+      height: 28px;
+      color: #050505;
+    }
+
+    .logo-text {
+      font-size: 42px;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+
+    .font-info {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #1f1f1f;
+    }
+
+    .font-name {
+      font-size: 14px;
+      color: #00ff88;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .sample-text {
+      font-size: 16px;
+      color: #a0a0a0;
+      line-height: 1.6;
+    }
+
+    .weights {
+      display: flex;
+      gap: 20px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .weight-sample {
+      font-size: 14px;
+      color: #666;
+    }
+
+    /* 选项1: Bebas Neue - 工业风 */
+    .option-1 .logo-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px;
+      letter-spacing: 4px;
+      background: linear-gradient(135deg, #fff 0%, #888 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* 选项2: Clash Display - 现代几何 */
+    .option-2 .logo-text {
+      font-family: 'Clash Display', sans-serif;
+      background: linear-gradient(135deg, #00ff88 0%, #00cc6a 50%, #00ffaa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* 选项3: Cabinet Grotesk - 优雅现代 */
+    .option-3 .logo-text {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 800;
+      background: linear-gradient(135deg, #fff 0%, #ccc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* 选项4: General Sans - 极简主义 */
+    .option-4 .logo-text {
+      font-family: 'General Sans', sans-serif;
+      font-weight: 600;
+      letter-spacing: -2px;
+      color: #fff;
+    }
+
+    /* 选项5: Satoshi - 科技未来 */
+    .option-5 .logo-text {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 900;
+      background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* 选项6: Uncut Sans - 独特个性 */
+    .option-6 .logo-text {
+      font-family: 'Uncut Sans', sans-serif;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -1px;
+    }
+
+    /* 选项7: Syne - 艺术实验 */
+    .option-7 .logo-text {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      background: linear-gradient(135deg, #fff 0%, #00ff88 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* 选项8: Plus Jakarta Sans - 友好现代 */
+    .option-8 .logo-text {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    /* 选项9: Manrope - 圆润亲和 */
+    .option-9 .logo-text {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
+      background: linear-gradient(135deg, #00ff88 0%, #fff 50%, #00cc6a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .select-btn {
+      margin-top: 25px;
+      padding: 12px 28px;
+      background: transparent;
+      border: 1px solid #333;
+      border-radius: 10px;
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .select-btn:hover {
+      background: #00ff88;
+      border-color: #00ff88;
+      color: #050505;
+    }
+
+    .current-selection {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(17, 17, 17, 0.95);
+      border: 1px solid #00ff88;
+      border-radius: 50px;
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+    }
+
+    .current-selection span {
+      color: #888;
+      font-size: 14px;
+    }
+
+    .current-selection strong {
+      color: #00ff88;
+      font-size: 18px;
+    }
+
+    @media (max-width: 768px) {
+      .showcase-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      body {
+        padding: 40px 20px;
+      }
+      
+      h1 {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>选择你喜欢的字体与 Logo 风格</h1>
+    
+    <div class="showcase-grid">
+      <!-- 选项1: Bebas Neue - 工业风 -->
+      <div class="option-card option-1">
+        <span class="option-number">01</span>
+        <div class="logo-preview">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+            </svg>
+          </div>
+          <span class="logo-text">DONE</span>
+        </div>
+        <div class="font-info">
+          <div class="font-name">Bebas Neue - 工业风/硬朗</div>
+          <div class="sample-text">
+            全部任务 · 今天 · 重要 · 已完成<br>
+            添加新任务... · 搜索任务...
+          </div>
+          <div class="weights">
+            <span class="weight-sample" style="font-family:'Bebas Neue';font-weight:400">Regular</span>
+          </div>
+        </div>
+        <button class="select-btn" onclick="selectOption(1, 'Bebas Neue')">选择此风格</button>
+      </div>
+
+      <!-- 选项2: Clash Display - 现代几何 -->
+      <div class="option-card option-2">
+        <span class="option-number">02</span>
+        <div class="logo-preview">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+            </svg>
+          </div>
+          <span class="logo-text">Done</span>
+        </div>
+        <div class="font-info">
+          <div class="font-name">Clash Display - 现代几何/锐利</div>
+          <div class="sample-text" style="font-family:'Clash Display'">
+            全部任务 · 今天 · 重要 · 已完成<br>
+            添加新任务... · 搜索任务...
+          </div>
+          <div class="weights">
+            <span class="weight-sample" style="font-family:'Clash Display';font-weight:400">400</span>
+            <span class="weight-sample" style="font-family:'Clash Display';font-weight:500">500</span>
+            <span class="weight-sample" style="font-family:'Clash Display';font-weight:600">600</span>
+            <span class="weight-sample" style="font-family:'Clash Display';font-weight:700">700</span>
+          </div>
+        </div>
+        <button class="select-btn" onclick="selectOption(2, 'Clash Display')">选择此风格</button>
+      </div>
+
+      <!-- 选项3: Cabinet Grotesk - 优雅现代 -->
+      <div class="option-card option-3">
+        <span class="option-number">03</span>
+        <div class="logo-preview">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+            </svg>
+          </div>
+          <span class="logo-text">Done</span>
+        </div>
+        <div class="font-info">
+          <div class="font-name">Cabinet Grotesk - 优雅现代/精致</div>
+          <div class="sample-text" style="font-family:'Cabinet Grotesk'">
+            全部任务 · 今天 · 重要 · 已完成<br>
+            添加新任务... · 搜索任务...
+          </div>
+          <div class="weights">
+            <span class="weight-sample" style="font-family:'Cabinet Grotesk';font-weight:400">400</span>
+            <span class="weight-sample" style="font-family:'Cabinet Grotesk';font-weight:500">500</span>
+            <span class="weight-sample" style="font-family:'Cabinet Grotesk';font-weight:700">700</span>
+            <span class="weight-sample" style="font-family:'Cabinet Grotesk';font-weight:800">800</span>
+          </div>
+        </div>
+        <button class="select-btn" onclick="selectOption(3, 'Cabinet Grotesk')">选择此风格</button>
+      </div>
+
+      <!-- 选项4: General Sans - 极简主义 -->
+      <div class="option-card option-4">
+        <span class="option-number">04</span>
+        <div class="logo-preview">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+            </svg>
+          </div>
+          <span class="logo-text">Done</span>
+        </div>
+        <div class="font-info">
+          <div class="font-name">General Sans - 极简主义/干净</div>
+          <div class="sample-text" style="font-family:'General Sans'">
+            全部任务 · 今天 · 重要 · 已完成<br>
+            添加新任务... · 搜索任务...
+          </div>
+          <div class="weights">
+            <span class="weight-sample" style="font-family:'General Sans';font-weight:400">400</span>
+            <span class="weight-sample" style="font-family:'General Sans';font-weight:500">500</span>
+            <span class="weight-sample" style="font-family:'General Sans';font-weight:600">600</span>
+            <span class="weight-sample" style="font-family:'General Sans';font-weight:700">700</span>
+          </div>
+        </div>
+        <button class="select-btn" onclick="selectOption(4, 'General Sans')">选择此风格</button>
+      </div>
+
+      <!-- 选项5: Satoshi - 科技未来 -->
+      <div class="option-card option-5">
+        <span class="option-number">05</span>
+        <div class="logo-preview">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+            </svg>
+          </div>
+          <span class="logo-text">DONE</span>
+        </div>
+        <div class="font-info">
+          <div class="font-name">Satoshi - 科技未来/力量感</div>
+          <div class="sample-text" style="font-family:'Satoshi'">
+            全部任务 · 今天 · 重要 · 已完成<br>
+            添加新任务... · 搜索任务...
+          </div>
+          <div class="weights">
+            <span class="weight-sample" style="font-family:'Satoshi';font-weight:400">400</span>
+            <span class="weight-sample" style="font-family:'Satoshi';font-weight:500">500</span>
+            <span class="weight-sample" style="font-family:'Satoshi';font-weight:700">700</span>
+            <span class="weight-sample" style="font-family:'Satoshi';font-weight:900">900</span>
+          </div>
+        </div>
+        <button class="select-btn" onclick="selectOption(5, 'Satoshi')">选择此风格</button>
+      </div>
+
+      <!-- 选项6: Uncut Sans - 独特个性 -->
+      <div class="option-card option-6">
+        <span class="option-number">06</span>
+        <div class="logo-preview">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+            </svg>
+          </div>
+          <span class="logo-text">Done</span>
+        </div>
+        <div class="font-info">
+          <div class="font-name">Uncut Sans - 独特个性/前卫</div>
+          <div class="sample-text" style="font-family:'Uncut Sans'">
+            全部任务 · 今天 · 重要 · 已完成<br>
+            添加新任务... · 搜索任务...
+          </div>
+          <div class="weights">
+            <span class="weight-sample" style="font-family:'Uncut Sans';font-weight:400">400</span>
+            <span class="weight-sample" style="font-family:'Uncut Sans';font-weight:500">500</span>
+            <span class="weight-sample" style="font-family:'Uncut Sans';font-weight:600">600</span>
+            <span class="weight-sample" style="font-family:'Uncut Sans';font-weight:700">700</span>
+          </div>
+        </div>
+        <button class="select-btn" onclick="selectOption(6, 'Uncut Sans')">选择此风格</button>
+      </div>
+
+      <!-- 选项7: Syne - 艺术实验 -->
+      <div class="option-card option-7">
+        <span class="option-number">07</span>
+        <div class="logo-preview">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+            </svg>
+          </div>
+          <span class="logo-text">Done</span>
+        </div>
+        <div class="font-info">
+          <div class="font-name">Syne - 艺术实验/创意</div>
+          <div class="sample-text" style="font-family:'Syne'">
+            全部任务 · 今天 · 重要 · 已完成<br>
+            添加新任务... · 搜索任务...
+          </div>
+          <div class="weights">
+            <span class="weight-sample" style="font-family:'Syne';font-weight:400">400</span>
+            <span class="weight-sample" style="font-family:'Syne';font-weight:500">500</span>
+            <span class="weight-sample" style="font-family:'Syne';font-weight:600">600</span>
+            <span class="weight-sample" style="font-family:'Syne';font-weight:700">700</span>
+            <span class="weight-sample" style="font-family:'Syne';font-weight:800">800</span>
+          </div>
+        </div>
+        <button class="select-btn" onclick="selectOption(7, 'Syne')">选择此风格</button>
+      </div>
+
+      <!-- 选项8: Plus Jakarta Sans - 友好现代 -->
+      <div class="option-card option-8">
+        <span class="option-number">08</span>
+        <div class="logo-preview">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+            </svg>
+          </div>
+          <span class="logo-text">Done</span>
+        </div>
+        <div class="font-info">
+          <div class="font-name">Plus Jakarta Sans - 友好现代/亲和</div>
+          <div class="sample-text" style="font-family:'Plus Jakarta Sans'">
+            全部任务 · 今天 · 重要 · 已完成<br>
+            添加新任务... · 搜索任务...
+          </div>
+          <div class="weights">
+            <span class="weight-sample" style="font-family:'Plus Jakarta Sans';font-weight:400">400</span>
+            <span class="weight-sample" style="font-family:'Plus Jakarta Sans';font-weight:500">500</span>
+            <span class="weight-sample" style="font-family:'Plus Jakarta Sans';font-weight:600">600</span>
+            <span class="weight-sample" style="font-family:'Plus Jakarta Sans';font-weight:700">700</span>
+            <span class="weight-sample" style="font-family:'Plus Jakarta Sans';font-weight:800">800</span>
+          </div>
+        </div>
+        <button class="select-btn" onclick="selectOption(8, 'Plus Jakarta Sans')">选择此风格</button>
+      </div>
+
+      <!-- 选项9: Manrope - 圆润亲和 -->
+      <div class="option-card option-9">
+        <span class="option-number">09</span>
+        <div class="logo-preview">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+            </svg>
+          </div>
+          <span class="logo-text">Done</span>
+        </div>
+        <div class="font-info">
+          <div class="font-name">Manrope - 圆润亲和/平衡</div>
+          <div class="sample-text" style="font-family:'Manrope'">
+            全部任务 · 今天 · 重要 · 已完成<br>
+            添加新任务... · 搜索任务...
+          </div>
+          <div class="weights">
+            <span class="weight-sample" style="font-family:'Manrope';font-weight:400">400</span>
+            <span class="weight-sample" style="font-family:'Manrope';font-weight:500">500</span>
+            <span class="weight-sample" style="font-family:'Manrope';font-weight:600">600</span>
+            <span class="weight-sample" style="font-family:'Manrope';font-weight:700">700</span>
+            <span class="weight-sample" style="font-family:'Manrope';font-weight:800">800</span>
+          </div>
+        </div>
+        <button class="select-btn" onclick="selectOption(9, 'Manrope')">选择此风格</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="current-selection" id="currentSelection" style="display: none;">
+    <span>当前选择:</span>
+    <strong id="selectedFont">-</strong>
+  </div>
+
+  <script>
+    function selectOption(number, fontName) {
+      document.getElementById('currentSelection').style.display = 'flex';
+      document.getElementById('selectedFont').textContent = `选项 ${number} - ${fontName}`;
+      
+      // 滚动到顶部
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

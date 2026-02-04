@@ -1,0 +1,8 @@
+name = "done-todo-app"
+compatibility_date = "2024-01-01"
+pages_build_output_dir = "dist"
+
+# KV 命名空间绑定
+[[kv_namespaces]]
+binding = "TODO_KV"
+id = "721149574aab4daa8046af88b9657e8d"
