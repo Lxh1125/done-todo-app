@@ -65,6 +65,26 @@ const DoneIcon = ({ className }) => (
   </svg>
 )
 
+const SunIcon = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="5"></circle>
+    <line x1="12" y1="1" x2="12" y2="3"></line>
+    <line x1="12" y1="21" x2="12" y2="23"></line>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+    <line x1="1" y1="12" x2="3" y2="12"></line>
+    <line x1="21" y1="12" x2="23" y2="12"></line>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+  </svg>
+)
+
+const MoonIcon = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+  </svg>
+)
+
 const priorityConfig = {
   high: { label: '高', color: '#ff4757', value: 2 },
   low: { label: '低', color: '#2ed573', value: 1 }
@@ -88,6 +108,10 @@ function App() {
   const [completedSearch, setCompletedSearch] = useState('')
   const [completingTaskId, setCompletingTaskId] = useState(null)
   const [deletingTaskId, setDeletingTaskId] = useState(null)
+  const [theme, setTheme] = useState(() => {
+    const saved = localStorage.getItem('theme')
+    return saved || 'dark'
+  })
   const timelineRef = useRef(null)
 
   const [ganttStartDate, setGanttStartDate] = useState(() => {
@@ -120,6 +144,15 @@ function App() {
   useEffect(() => {
     localStorage.setItem('done-todo-tasks', JSON.stringify(tasks))
   }, [tasks])
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+    localStorage.setItem('theme', theme)
+  }, [theme])
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark')
+  }
 
   const getCountdown = (dueDate) => {
     if (!dueDate) return null
@@ -375,6 +408,9 @@ function App() {
 
         <div className="sidebar-footer">
           <span className="task-total">共 {totalCount} 项</span>
+          <button className="theme-toggle" onClick={toggleTheme} title={theme === 'dark' ? '切换到浅色模式' : '切换到深色模式'}>
+            {theme === 'dark' ? <SunIcon className="theme-icon" /> : <MoonIcon className="theme-icon" />}
+          </button>
         </div>
       </div>
 

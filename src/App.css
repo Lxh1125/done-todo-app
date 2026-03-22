@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Satoshi:wght@400;500;700;900&display=swap');
 
-:root {
+[data-theme="dark"] {
   --bg-primary: #050505;
   --bg-secondary: #0a0a0a;
   --bg-tertiary: #111111;
@@ -195,11 +195,39 @@ body {
   margin-top: auto;
   padding: 16px 8px;
   border-top: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .task-total {
   font-size: 13px;
   color: var(--text-muted);
+}
+
+.theme-toggle {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+.theme-icon {
+  width: 18px;
+  height: 18px;
 }
 
 /* Main */
