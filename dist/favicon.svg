@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00ff88;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00cc6a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="ring" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00ff88;stop-opacity:0.6" />
+      <stop offset="50%" style="stop-color:#00cc6a;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#00ff88;stop-opacity:0.6" />
+    </linearGradient>
+    <filter id="glow-filter" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="32" height="32" rx="6" fill="#0a0a0a"/>
+  
+  <!-- Outer ring -->
+  <ellipse cx="16" cy="16" rx="13" ry="13" fill="none" stroke="url(#ring)" stroke-width="1.5" opacity="0.8"/>
+  
+  <!-- Inner ring -->
+  <ellipse cx="16" cy="16" rx="10" ry="10" fill="none" stroke="url(#ring)" stroke-width="0.8" opacity="0.5"/>
+  
+  <!-- D letter -->
+  <text x="16" y="21" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="url(#glow)" text-anchor="middle" filter="url(#glow-filter)">D</text>
+  
+  <!-- Accent dots -->
+  <circle cx="6" cy="16" r="1" fill="#00ff88" opacity="0.8"/>
+  <circle cx="26" cy="16" r="1" fill="#00ff88" opacity="0.8"/>
+</svg>

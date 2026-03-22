@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Done App - 图标设计原型</title>
+  <link href="https://fonts.googleapis.com/css2?family=Satoshi:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #050505;
+      --bg-secondary: #0a0a0a;
+      --accent-primary: #00ff88;
+      --accent-secondary: #00cc6a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Satoshi', sans-serif;
+      background: var(--bg-primary);
+      color: #ffffff;
+      min-height: 100vh;
+      padding: 60px 40px;
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    p {
+      color: #a0a0a0;
+      margin-bottom: 48px;
+      font-size: 16px;
+    }
+
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      max-width: 1200px;
+    }
+
+    .icon-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid #1f1f1f;
+      border-radius: 16px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      transition: all 0.3s ease;
+    }
+
+    .icon-card:hover {
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 30px rgba(0, 255, 136, 0.1);
+      transform: translateY(-4px);
+    }
+
+    .icon-preview {
+      width: 80px;
+      height: 80px;
+      background: #0a0a0a;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon-name {
+      font-size: 18px;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .icon-desc {
+      font-size: 13px;
+      color: #666;
+      text-align: center;
+    }
+
+    .select-btn {
+      padding: 10px 24px;
+      background: transparent;
+      border: 1px solid #333;
+      border-radius: 8px;
+      color: #888;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .select-btn:hover {
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+    }
+
+    .select-btn.selected {
+      background: var(--accent-primary);
+      border-color: var(--accent-primary);
+      color: #000;
+    }
+
+    /* Icon 1: 全息进度环 */
+    .icon-1 svg {
+      filter: drop-shadow(0 0 8px rgba(0, 255, 136, 0.4));
+    }
+
+    /* Icon 2: 简约线条 */
+    .icon-2 {
+      background: #ffffff;
+    }
+
+    .icon-2 svg text {
+      fill: #00cc6a;
+    }
+
+    /* Icon 3: 像素风格 */
+    .icon-3 svg text {
+      font-family: monospace;
+      font-size: 28px;
+      font-weight: bold;
+      fill: #00ff88;
+    }
+
+    /* Icon 4: 圆形徽章 */
+    .icon-4 {
+      background: linear-gradient(135deg, #00ff88, #00cc6a);
+    }
+
+    /* Icon 5: 霓虹管 */
+    .icon-5 svg {
+      filter: drop-shadow(0 0 6px rgba(0, 255, 136, 0.8));
+    }
+
+    /* Icon 6: 能量环 */
+    .icon-6 svg {
+      filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.5));
+    }
+
+    /* Icon 7: 叶子形状 */
+    .icon-7 {
+      background: linear-gradient(135deg, #1a3a1a, #0a1a0a);
+    }
+
+    /* Icon 8: 进度条 */
+    .icon-8 svg {
+      filter: drop-shadow(0 0 4px rgba(0, 255, 136, 0.3));
+    }
+
+    /* Icon 9: 抽象几何 */
+    .icon-9 svg {
+      filter: drop-shadow(0 0 8px rgba(0, 255, 136, 0.3));
+    }
+
+    .selected-indicator {
+      font-size: 12px;
+      color: var(--accent-primary);
+      margin-top: 8px;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .icon-card.selected .selected-indicator {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <h1>图标设计原型</h1>
+  <p>选择您喜欢的图标风格，点击确认按钮应用到应用</p>
+
+  <div class="icon-grid">
+    <!-- Icon 1: 全息进度环 -->
+    <div class="icon-card selected" data-icon="1">
+      <div class="icon-preview icon-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="64" height="64">
+          <defs>
+            <linearGradient id="glow1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#00ff88"/>
+              <stop offset="100%" style="stop-color:#00cc6a"/>
+            </linearGradient>
+            <linearGradient id="ring1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#00ff88;stop-opacity:0.6"/>
+              <stop offset="50%" style="stop-color:#00ff88;stop-opacity:0.2"/>
+              <stop offset="100%" style="stop-color:#00ff88;stop-opacity:0.6"/>
+            </linearGradient>
+          </defs>
+          <rect width="80" height="80" rx="12" fill="#0a0a0a"/>
+          <ellipse cx="40" cy="40" rx="32" ry="32" fill="none" stroke="url(#ring1)" stroke-width="3"/>
+          <ellipse cx="40" cy="40" rx="26" ry="26" fill="none" stroke="url(#ring1)" stroke-width="1.5" opacity="0.5"/>
+          <text x="40" y="48" font-family="Arial" font-size="28" font-weight="bold" fill="url(#glow1)" text-anchor="middle">D</text>
+          <circle cx="12" cy="40" r="3" fill="#00ff88" opacity="0.8"/>
+          <circle cx="68" cy="40" r="3" fill="#00ff88" opacity="0.8"/>
+        </svg>
+      </div>
+      <div class="icon-name">全息进度环</div>
+      <div class="icon-desc">霓虹绿渐变 + 双层光环</div>
+      <button class="select-btn selected">已选择</button>
+      <div class="selected-indicator">当前选中</div>
+    </div>
+
+    <!-- Icon 2: 简约线条 -->
+    <div class="icon-card" data-icon="2">
+      <div class="icon-preview icon-2">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="64" height="64">
+          <rect width="80" height="80" rx="12" fill="#ffffff"/>
+          <rect x="12" y="24" width="56" height="32" rx="6" fill="none" stroke="#00cc6a" stroke-width="2"/>
+          <text x="40" y="47" font-family="Arial" font-size="22" font-weight="bold" fill="#00cc6a" text-anchor="middle">D</text>
+        </svg>
+      </div>
+      <div class="icon-name">简约线条</div>
+      <div class="icon-desc">白底绿字，简洁干净</div>
+      <button class="select-btn">选择此图标</button>
+      <div class="selected-indicator">当前选中</div>
+    </div>
+
+    <!-- Icon 3: 像素风格 -->
+    <div class="icon-card" data-icon="3">
+      <div class="icon-preview icon-3">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="64" height="64">
+          <rect width="80" height="80" rx="12" fill="#0a0a0a"/>
+          <text x="40" y="50" font-family="monospace" font-size="32" font-weight="bold" fill="#00ff88" text-anchor="middle" style="letter-spacing: -2px;">D</text>
+        </svg>
+      </div>
+      <div class="icon-name">像素风格</div>
+      <div class="icon-desc">复古老爹风格，游戏感</div>
+      <button class="select-btn">选择此图标</button>
+      <div class="selected-indicator">当前选中</div>
+    </div>
+
+    <!-- Icon 4: 圆形徽章 -->
+    <div class="icon-card" data-icon="4">
+      <div class="icon-preview icon-4">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="64" height="64">
+          <circle cx="40" cy="40" r="28" fill="#00ff88"/>
+          <text x="40" y="47" font-family="Arial" font-size="24" font-weight="bold" fill="#0a0a0a" text-anchor="middle">D</text>
+          <polyline points="28,40 36,48 52,32" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="icon-name">圆形徽章</div>
+      <div class="icon-desc">绿色圆形底 + 对勾</div>
+      <button class="select-btn">选择此图标</button>
+      <div class="selected-indicator">当前选中</div>
+    </div>
+
+    <!-- Icon 5: 霓虹管 -->
+    <div class="icon-card" data-icon="5">
+      <div class="icon-preview icon-5">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="64" height="64">
+          <rect width="80" height="80" rx="12" fill="#0a0a0a"/>
+          <rect x="14" y="22" width="52" height="36" rx="4" fill="none" stroke="#00ff88" stroke-width="3"/>
+          <text x="40" y="48" font-family="Arial" font-size="24" font-weight="bold" fill="#00ff88" text-anchor="middle">D</text>
+        </svg>
+      </div>
+      <div class="icon-name">霓虹管</div>
+      <div class="icon-desc">灯管发光效果</div>
+      <button class="select-btn">选择此图标</button>
+      <div class="selected-indicator">当前选中</div>
+    </div>
+
+    <!-- Icon 6: 能量环 -->
+    <div class="icon-card" data-icon="6">
+      <div class="icon-preview icon-6">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="64" height="64">
+          <rect width="80" height="80" rx="12" fill="#0a0a0a"/>
+          <circle cx="40" cy="40" r="30" fill="none" stroke="#00ff88" stroke-width="2" stroke-dasharray="8 4"/>
+          <circle cx="14" cy="40" r="4" fill="#00ff88"/>
+          <circle cx="66" cy="40" r="4" fill="#00ff88"/>
+          <circle cx="40" cy="10" r="4" fill="#00ff88"/>
+          <circle cx="40" cy="70" r="4" fill="#00ff88"/>
+          <text x="40" y="46" font-family="Arial" font-size="20" font-weight="bold" fill="#ffffff" text-anchor="middle">D</text>
+        </svg>
+      </div>
+      <div class="icon-name">能量环</div>
+      <div class="icon-desc">四角发光点 + 虚线圈</div>
+      <button class="select-btn">选择此图标</button>
+      <div class="selected-indicator">当前选中</div>
+    </div>
+
+    <!-- Icon 7: 叶子形状 -->
+    <div class="icon-card" data-icon="7">
+      <div class="icon-preview icon-7">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="64" height="64">
+          <rect width="80" height="80" rx="12" fill="#0f1a0f"/>
+          <path d="M40 15 C20 25, 15 50, 40 65 C65 50, 60 25, 40 15" fill="none" stroke="#00ff88" stroke-width="2"/>
+          <polyline points="32,42 38,48 50,36" fill="none" stroke="#00ff88" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="icon-name">叶子形状</div>
+      <div class="icon-desc">自然有机 + 对勾</div>
+      <button class="select-btn">选择此图标</button>
+      <div class="selected-indicator">当前选中</div>
+    </div>
+
+    <!-- Icon 8: 进度条 -->
+    <div class="icon-card" data-icon="8">
+      <div class="icon-preview icon-8">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="64" height="64">
+          <rect width="80" height="80" rx="12" fill="#0a0a0a"/>
+          <defs>
+            <linearGradient id="progress" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#00ff88"/>
+              <stop offset="100%" style="stop-color:#00cc6a"/>
+            </linearGradient>
+          </defs>
+          <rect x="12" y="32" width="56" height="16" rx="8" fill="#1a1a1a"/>
+          <rect x="12" y="32" width="40" height="16" rx="8" fill="url(#progress)"/>
+          <text x="40" y="44" font-family="Arial" font-size="10" font-weight="bold" fill="#0a0a0a" text-anchor="middle">D</text>
+        </svg>
+      </div>
+      <div class="icon-name">进度条</div>
+      <div class="icon-desc">渐变进度 + 字母</div>
+      <button class="select-btn">选择此图标</button>
+      <div class="selected-indicator">当前选中</div>
+    </div>
+
+    <!-- Icon 9: 抽象几何 -->
+    <div class="icon-card" data-icon="9">
+      <div class="icon-preview icon-9">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="64" height="64">
+          <rect width="80" height="80" rx="12" fill="#0a0a0a"/>
+          <polygon points="40,12 68,40 40,68 12,40" fill="none" stroke="#00ff88" stroke-width="2"/>
+          <polygon points="40,22 58,40 40,58 22,40" fill="none" stroke="#00ff88" stroke-width="1" opacity="0.5"/>
+          <text x="40" y="46" font-family="Arial" font-size="18" font-weight="bold" fill="#00ff88" text-anchor="middle">D</text>
+        </svg>
+      </div>
+      <div class="icon-name">抽象几何</div>
+      <div class="icon-desc">旋转方形 + 同心方</div>
+      <button class="select-btn">选择此图标</button>
+      <div class="selected-indicator">当前选中</div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.icon-card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.icon-card').forEach(c => {
+          c.classList.remove('selected');
+          c.querySelector('.select-btn').textContent = '选择此图标';
+          c.querySelector('.select-btn').classList.remove('selected');
+        });
+        card.classList.add('selected');
+        card.querySelector('.select-btn').textContent = '已选择';
+        card.querySelector('.select-btn').classList.add('selected');
+      });
+    });
+  </script>
+</body>
+</html>
